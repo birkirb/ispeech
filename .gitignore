@@ -1,0 +1,6 @@
+config/
+vendor/
+Gemfile.lock
+pkg/
+tmp/
+script/voice_enumerator.out

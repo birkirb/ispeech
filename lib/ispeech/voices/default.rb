@@ -1,0 +1,42 @@
+module Ispeech
+  module Voices
+    PER_LANGUAGE = {
+      :ar      =>  {:female=>[], :male=>["arabicmale"]},
+      :ca      =>  {:female=>["eurcatalanfemale"], :male=>[]},
+      :cs      =>  {:female=>["eurczechfemale"], :male=>[]},
+      :da      =>  {:female=>["eurdanishfemale"], :male=>[]},
+      :de      =>  {:female=>["eurgermanfemale"], :male=>["eurgermanmale"]},
+      :el      =>  {:female=>["eurgreekfemale"], :male=>[]},
+      :en      =>  {:female=>["usenglishfemale", "caenglishfemale", "ukenglishfemale", "auenglishfemale"], :male=>["usenglishmale", "ukenglishmale"]},
+      :en_AU   =>  {:female=>["auenglishfemale"], :male=>[]},
+      :en_CA   =>  {:female=>["caenglishfemale"], :male=>[]},
+      :en_GB   =>  {:female=>[], :male=>["ukenglishmale"]},
+      :en_UK   =>  {:female=>["ukenglishfemale"], :male=>[]},
+      :en_US   =>  {:female=>["usenglishfemale"], :male=>[]},
+      :es      =>  {:female=>["eurspanishfemale", "usspanishfemale"], :male=>["usspanishmale", "eurspanishmale"]},
+      :es_ES   =>  {:female=>["eurspanishfemale"], :male=>["eurspanishmale"]},
+      :es_MX   =>  {:female=>[], :male=>["usspanishmale"]},
+      :fi      =>  {:female=>["eurfinnishfemale"], :male=>[]},
+      :fr      =>  {:female=>["cafrenchfemale", "eurfrenchfemale"], :male=>["cafrenchmale", "eurfrenchmale"]},
+      :fr_CA   =>  {:female=>["cafrenchfemale"], :male=>["cafrenchmale"]},
+      :fr_FR   =>  {:female=>["eurfrenchfemale"], :male=>["eurfrenchmale"]},
+      :hu      =>  {:female=>["huhungarianfemale"], :male=>[]},
+      :it      =>  {:female=>["euritalianfemale"], :male=>["euritalianmale"]},
+      :ja      =>  {:female=>["jpjapanesefemale"], :male=>["jpjapanesemale"]},
+      :ko      =>  {:female=>["krkoreanfemale"], :male=>["krkoreanmale"]},
+      :ko_KR   =>  {:female=>[], :male=>["krkoreanmale"]},
+      :nl      =>  {:female=>["eurdutchfemale"], :male=>[]},
+      :no      =>  {:female=>["eurnorwegianfemale"], :male=>[]},
+      :pl      =>  {:female=>["eurpolishfemale"], :male=>[]},
+      :pt      =>  {:female=>["brportuguesefemale", "eurportuguesefemale"], :male=>["eurportuguesemale"]},
+      :pt_BR   =>  {:female=>["brportuguesefemale"], :male=>[]},
+      :pt_PT   =>  {:female=>["eurportuguesefemale"], :male=>["eurportuguesemale"]},
+      :ru      =>  {:female=>["rurussianfemale"], :male=>["rurussianmale"]},
+      :sv      =>  {:female=>["swswedishfemale"], :male=>[]},
+      :tr      =>  {:female=>["eurturkishfemale"], :male=>["eurturkishmale"]},
+      :zh      =>  {:female=>["hkchinesefemale", "twchinesefemale", "chchinesefemale"], :male=>["chchinesemale"]},
+      :zh_HK   =>  {:female=>["hkchinesefemale", "chchinesefemale"], :male=>[]},
+      :zh_TW   =>  {:female=>["twchinesefemale"], :male=>[]}
+    }
+  end
+end
