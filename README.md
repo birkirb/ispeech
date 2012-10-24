@@ -32,7 +32,7 @@ More info on their API at http://www.ispeech.org/api/
   
     service = Ispeech::VoiceService.new(my_config_object)
 
-  generate sounds 
+### Generate sounds 
 
     response = service.generate_sound('speak this text', language_or_voice_options)
  
@@ -43,7 +43,7 @@ More info on their API at http://www.ispeech.org/api/
 
 ### Language and voice options
 
-  All available voices are defined in https://github.com/birkirb/ispeech/blob/master/lib/ispeech/voices/default.rb 
+  All available voices are defined in [voices/default.rb](https://github.com/birkirb/ispeech/blob/master/lib/ispeech/voices/default.rb)
 
   You can specificy language, gender, voice name in any combination
 
