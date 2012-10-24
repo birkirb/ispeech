@@ -5,7 +5,7 @@ module Ispeech
     FAKE_ERROR = Error.new("The mock wants you to fail!")
     EMPTY_PROC = proc {}
 
-    def self.mock_on
+    def self.enable!
       Ispeech::Response.class_eval(<<-EVAL, __FILE__, __LINE__)
         def download_to_tempfile
           download_to_tempfile_with_mock
@@ -21,7 +21,7 @@ module Ispeech
       EVAL
     end
 
-    def self.mock_off
+    def self.disable!
       Ispeech::Response.class_eval(<<-EVAL, __FILE__, __LINE__)
         def download_to_tempfile
           download_to_tempfile_without_mock

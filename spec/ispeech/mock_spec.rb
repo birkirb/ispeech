@@ -4,12 +4,12 @@ require 'ispeech/mock'
 describe Ispeech::Mock do
 
   before(:each) do
-    Ispeech::Mock.mock_on
+    Ispeech::Mock.enable!
   end
 
   after(:each) do
     Ispeech::VoiceService.expect_ok_response
-    Ispeech::Mock.mock_off
+    Ispeech::Mock.disable!
   end
 
   context 'When mock is on' do
