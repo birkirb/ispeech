@@ -72,8 +72,8 @@ module Ispeech
         named_voice(speaker)
       else
         language = options[:language] || :en
-        gender = options[:gender]
-        speakers_for_language = self.map[language]
+        gender = options[:gender].nil? ? nil : options[:gender].to_sym
+        speakers_for_language = self.map[language.to_sym]
 
         speakers = case gender
         when GENDER_FEMALE
