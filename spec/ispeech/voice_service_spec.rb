@@ -63,6 +63,12 @@ describe Ispeech::VoiceService do
         pending("Without mock, the returned file quality needs to be confirmed")
       end
     end
+
+    it 'should throw an error if no custom voice is given' do
+       expect do
+        service.generate_with_voice(text_string, nil)
+       end.to raise_error(Ispeech::Error, Ispeech::VoiceService::ERROR_MISSING_VOICE.message)
+    end
   end
 
 end

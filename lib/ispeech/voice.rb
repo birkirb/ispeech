@@ -4,6 +4,9 @@ module Ispeech
   class Voice
     attr_reader :languages, :speaker, :gender, :quality
 
+    ERROR_VOICE_DOES_NOT_EXIST = Error.new("Voice does not exist.")
+    ERROR_NO_VOICE_FOR_OPTIONS = Error.new("No voice exists for the options requested.")
+
     def initialize(speaker, gender, *languages)
       @speaker = speaker
       @gender = gender
@@ -75,20 +78,23 @@ module Ispeech
         gender = options[:gender].nil? ? nil : options[:gender].to_sym
         speakers_for_language = self.map[language.to_sym]
 
-        speakers = case gender
-        when GENDER_FEMALE
-          speakers_for_language[GENDER_FEMALE]
-        when GENDER_MALE
-          speakers_for_language[GENDER_MALE]
+        if speakers_for_language.nil?
+          raise ERROR_NO_VOICE_FOR_OPTIONS
         else
-          speakers_for_language[GENDER_FEMALE] +
+          speakers = case gender
+          when GENDER_FEMALE
+            speakers_for_language[GENDER_FEMALE]
+          when GENDER_MALE
             speakers_for_language[GENDER_MALE]
-        end
+          else
+            speakers_for_language[GENDER_FEMALE] + speakers_for_language[GENDER_MALE]
+          end
 
-        if speakers.empty?
-          nil
-        else
-          named_voice(speakers.sample)
+          if speakers.empty?
+            raise ERROR_NO_VOICE_FOR_OPTIONS
+          else
+            named_voice(speakers.sample)
+          end
         end
       end
     end
@@ -113,7 +119,7 @@ module Ispeech
       if info = @@voices[speaker.to_s.downcase.to_sym]
         info
       else
-        raise Error.new("Voice does not exist.")
+        raise ERROR_VOICE_DOES_NOT_EXIST
       end
     end
 

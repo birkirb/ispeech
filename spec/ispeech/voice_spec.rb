@@ -28,7 +28,7 @@ describe Ispeech::Voice do
     it 'should throw an error if the voice does not exist' do
       expect do
         Ispeech::Voice.named_voice('Birkir')
-      end.to raise_error(Ispeech::Error, "Voice does not exist.")
+      end.to raise_error(Ispeech::Voice::ERROR_VOICE_DOES_NOT_EXIST)
     end
 
     it 'should return the active voice map' do
@@ -66,6 +66,12 @@ describe Ispeech::Voice do
         (DEFAULT_ENGLISH_FEMALE_TEST_VOICES + DEFAULT_ENGLISH_MALE_TEST_VOICES).should include(voice.speaker)
       end
 
+      it 'throws error, with non existing speaker' do
+        expect do
+          Ispeech::Voice.extract_from_options(:speaker => 'Zorg')
+        end.to raise_error(Ispeech::Voice::ERROR_VOICE_DOES_NOT_EXIST)
+      end
+
       it 'specifies a speaker' do
         voice = Ispeech::Voice.extract_from_options(:speaker => 'antoine')
         voice.speaker.should == 'Antoine'
@@ -78,6 +84,12 @@ describe Ispeech::Voice do
         voice.speaker.should == 'Rosa'
       end
 
+      it 'throws error, with non existing language' do
+        expect do
+          Ispeech::Voice.extract_from_options(:language => :vorgon)
+        end.to raise_error(Ispeech::Voice::ERROR_NO_VOICE_FOR_OPTIONS)
+      end
+
       it 'specifies a language and no gender' do
         voice = Ispeech::Voice.extract_from_options(:language => :fr)
         voice.should_not be_nil
@@ -87,10 +99,14 @@ describe Ispeech::Voice do
       it 'specifies a language and gender' do
         voice = Ispeech::Voice.extract_from_options(:language => :es, :gender => Ispeech::Voice::GENDER_FEMALE)
         voice.speaker.should == 'Rosa'
-
-        voice = Ispeech::Voice.extract_from_options(:language => :es, :gender => Ispeech::Voice::GENDER_MALE)
-        voice.should be_nil
       end
+
+      it 'throws error, with non existing language gender' do
+        expect do
+          puts Ispeech::Voice.extract_from_options(:language => :es, :gender => :male)
+        end.to raise_error(Ispeech::Voice::ERROR_NO_VOICE_FOR_OPTIONS)
+      end
+
     end
   end
 

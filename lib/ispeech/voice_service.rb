@@ -6,6 +6,7 @@ module Ispeech
     CLIENT_ENVIRONMENT = "RUBY_#{RUBY_VERSION}"
 
     ERROR_MISSING_CONFIG = Error.new("VoiceService requires configuration.")
+    ERROR_MISSING_VOICE = Error.new("Voice generation requires a voice.")
 
     attr_reader :config
 
@@ -31,6 +32,8 @@ module Ispeech
     end
 
     def generate_with_voice(text, voice)
+      raise ERROR_MISSING_VOICE unless voice.is_a?(Ispeech::Voice)
+
       params = {
         # API Defaults:
         # :bitrate => 48,
