@@ -2,7 +2,7 @@ require 'uri'
 
 module Ispeech
 
-  VERSION = "1.0.1"
+  VERSION = "1.0.2"
 
   class Voice
     QUALITY_LOW = 8000
