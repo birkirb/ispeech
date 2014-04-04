@@ -30,6 +30,7 @@ module Ispeech
     def download_to_tempfile
       content = generated_file
       file = Tempfile.new(SecureRandom.uuid)
+      file.binmode
       file.write(content)
       file.flush
       file # Leaving open. Will be closed once object is finalized.
